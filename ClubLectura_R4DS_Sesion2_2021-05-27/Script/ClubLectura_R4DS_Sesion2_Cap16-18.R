@@ -56,9 +56,17 @@ today(tzone = "Australia/Sydney")
 
 # Creando fechas/horas con componentes individuales de fecha/hora ####
 #Carguemos un set de datos
-erupciones <- read_csv("ClubLectura_R4DS_Sesion2_2021-05-27/Datos/volcano_data_2010.csv")
+
+ruta="C:/Users/Asus-PC/Documents/ClubLectura_R4DS/ClubLectura_R4DS_Sesion2_2021-05-27/Datos"
+setwd(ruta)
+
+erupciones <- read_csv("volcano_data_2010.csv")
 #Revisemos los datos
 erupciones
+head(erupciones,4)
+tail(erupciones, 5)    #Las últimas 5 filas
+#estuctura global del dataframe
+str(erupciones) # más sobre dataframe en el link https://aprender-uib.github.io/AprendeR1/chap-df.html
 
 #Creemos la fecha en una nueva columna
 erupciones %>% 
@@ -225,15 +233,13 @@ minutes(10)
 months(c(2, 20))
 
 ymd("2019-03-01")+dyears(1)
-ymd("2019-03-01")+years(1)
-
+ymd("2019-03-01")+years(1) #ojo con years se asume que todos los años son iguales
 
 
 # Intervalos ####
 siguiente_anio <- today() + years(1)
-(today() %--% siguiente_anio) / ddays(1)
+(today() %--% siguiente_anio) / ddays(1) #duración real
 (today() %--% siguiente_anio) %/% days(1)
-
 
 
 # Zonas horarias ####
@@ -241,7 +247,7 @@ Sys.timezone()
 ymd_hms("2021-02-02 05:30:00")
 a <- ymd_hms("2021-02-02 05:30:00", tz = "Pacific/Galapagos")
 b <- ymd_hms("2021-02-02 05:30:00", tz = Sys.timezone())
-b - a
+b - a #diferencia horaria
 
 #Podemos cambiar un huso horario
 c <- today()
