@@ -258,10 +258,11 @@ force_tz(c, tzone = "Pacific/Galapagos")
 
 
 # Capitulo 18: Pipes ------------------------------------------------------
+#los pipes ayudan a que el código sea más fácil de leer
 library(magrittr)
 
 #Usando pipes
-erupciones %>% 
+erupciones %>% #este pipe esta en tidyverse
   filter(Location == "Ecuador") %>% 
   count(Year)
 
@@ -270,8 +271,11 @@ count(filter(erupciones, Location == "Ecuador"), Year)
 
 # El pipe %$% nos permite escoger columnas especificas en vez del data frame
 erupciones %>% 
-  drop_na(DAMAGE_MILLIONS_DOLLARS) %$% 
+  drop_na(DAMAGE_MILLIONS_DOLLARS) %$% #ojo con el nuevo pipe con dolar
   mean(DAMAGE_MILLIONS_DOLLARS)
+
+#shortcuts Ctrl+shift+m or cmd+shift+m (Mac)
+#Hay un nuevo pipe |>
 
 #El pipe %<>% permite reemplazar valores en una variable
 #Copiemos erupciones
@@ -282,7 +286,13 @@ erupciones2
 erupciones2 %<>% 
   drop_na(Day)
 erupciones2
-#Usar con precaucion
+
+# > dim(erupciones)
+# [1] 63 38
+# > dim(erupciones2)
+# [1] 57 38
+
+#Usar con precaucion porque con esto pisamos el dataframe
 
 #El pipe %T>% nos da resultados intermedios
 erupciones %>% 
