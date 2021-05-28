@@ -301,4 +301,4 @@ erupciones %>%
   print() %>% 
   ggplot(aes(Year, n))+
   geom_col()+
-  facet_wrap(~Country)
+  facet_wrap(~Country) #subgraficos donde cada pais es un grafico diferente
